@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Carbon Complex Icon Builder</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./styles.css" />
+        <link rel="icon" href="data:," />
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="importmap">
+            {
+                "imports": {
+                    "react": "https://esm.sh/react@18?dev",
+                    "react-dom/client": "https://esm.sh/react-dom@18/client?dev",
+                    "htm": "https://esm.sh/htm@3",
+                    "@carbon/icons-react": "https://esm.sh/@carbon/icons-react@11?external=react"
+                }
+            }
+        </script>
+        <script>
+            window.process = { env: { NODE_ENV: "production" } };
+        </script>
+        <script type="module">
+            const root = document.getElementById("root");
+            root.innerHTML =
+                "<p style='font-family: IBM Plex Sans, sans-serif;'>Loading app…</p>";
+            import("./app.js").catch((error) => {
+                root.innerHTML =
+                    "<pre style='white-space: pre-wrap; font-family: IBM Plex Mono, monospace; color: #b54708;'>" +
+                    String(error?.stack || error) +
+                    "</pre>";
+            });
+        </script>
+    </body>
+</html>

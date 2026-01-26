@@ -1,0 +1,7 @@
+version: '3'
+
+tasks:
+  run:
+    desc: Start local static server on port 5173
+    cmds:
+      - python3 -m http.server 5173
